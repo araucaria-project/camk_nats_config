@@ -1,10 +1,10 @@
-# oca_nats_config
+# camk_nats_config
 
 ## Description
 
 The main task of the project is to maintain information about existing 
-streams in the OCA observatory NATS network, and to update them on either
-OCA server `nats.oca.lan` or developer machine.
+streams in the CAMK Araucaria NATS network, and to update them on either
+CAMK NATS server or developer machine.
 
 The stream configuration for developers is stored in the `oca_nats_config/configuration`
 
@@ -36,7 +36,7 @@ To update the nats server with new streams, run the command:
 ## Installation
 
 ### Docker
-For the installation on Docker (OCA server or local developer machine)
+For the installation on Docker (CAMK server or local developer machine)
 follow the instructions in [Docker](docker/nats/NOTES.md) section.
 
 ### Manual installation
