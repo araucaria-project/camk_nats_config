@@ -1,6 +1,7 @@
 [Unit]
-Description=Run auto_update.sh every 5 minutes
+Description=Auto-update camk_nats_config streams
 
 [Service]
+Type=oneshot
 User=poweruser
-ExecStart=/usr/bin/auto_update.sh
+ExecStart=/opt/poweruser/src/camk_nats_config/scripts/auto_update.sh

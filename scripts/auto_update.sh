@@ -1,11 +1,12 @@
 #!/bin/bash
-SCRIPT_PATH="${BASH_SOURCE:-$0}"
-ABS_SCRIPT_PATH="$(realpath "${SCRIPT_PATH}")"
+# Auto-update for camk_nats_config
+# Called by systemd timer every 5 minutes as poweruser
 
-DIR_PATH="$(dirname "$ABS_SCRIPT_PATH")"
+export HOME=/opt/poweruser
+export PATH="/opt/poweruser/.local/bin:/usr/local/bin:/usr/bin"
 
-cd $DIR_PATH
-cd ..
+REPO_DIR="/opt/poweruser/src/camk_nats_config"
+cd "${REPO_DIR}"
 
 OLD_HEAD=$(git rev-parse HEAD)
 
@@ -15,10 +16,9 @@ echo "Pulled changes from git"
 
 NEW_HEAD=$(git rev-parse HEAD)
 
-if [ "$OLD_HEAD" != "$NEW_HEAD" ]
-then
-        python -m poetry update
-        python -m poetry install
-        python -m poetry run build
-        echo "Updated NATS streams"
+if [ "$OLD_HEAD" != "$NEW_HEAD" ]; then
+    poetry update
+    poetry install
+    poetry run build
+    echo "Updated NATS streams"
 fi
